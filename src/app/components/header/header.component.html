@@ -14,11 +14,11 @@
         <span>{{ item.name }}</span
         ><span class="bold"> x {{ item.quantity }}</span>
       </div>
-      <div>{{ item.price * item.quantity | currency }}</div>
+      <div>{{ item.price * item.quantity | currency : "INR" }}</div>
     </div>
     <div class="menu-row highlight">
       <div>Total:</div>
-      <div>{{ totalCartPrice | currency }}</div>
+      <div>{{ totalCartPrice | currency : "INR" }}</div>
     </div>
     <div class="menu-row highlight">
       <mat-icon
