@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+* {
+  box-sizing: content-box;
+}
+
+body {
+  min-width: 800px;
+}
+
+.badge {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  margin-top: -10px;
+  margin-left: 15px;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.tooltip {
+  background-color: black;
+  color: white;
+  font-size: 14px;
+}
+
+.mat-expansion-indicator {
+  &::after {
+    border-width: 0px 1px 1px 0px;
+    border-color: black;
+    display: flex;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.bold {
+  font-weight: 600;
+}

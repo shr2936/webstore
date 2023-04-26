@@ -1,0 +1,34 @@
+<div class="homepage">
+  <app-sidebar
+    (onSelectCategory)="updateSelectedCategory($event)"
+  ></app-sidebar>
+  <div class="products">
+    <app-product-header
+      (viewOptionsUpdated)="updateColCount($event)"
+    ></app-product-header>
+
+    <mat-grid-list
+      *ngIf="products && products.length"
+      [cols]="colCount"
+      rowHeight="440"
+      gutterSize="16"
+      class="product-grid-list"
+    >
+      <mat-grid-tile
+        *ngFor="let product of products; let productIndex = index"
+        class="product-grid-list-tile"
+      >
+        <app-product-box
+          [product]="product"
+          [colsCount]="colCount"
+          [category]="selectedCategory"
+          (onAddToCart)="onAddToCart(productIndex)"
+          (onUpdateProductQuantity)="
+            updateProductQuantity(productIndex, $event)
+          "
+        >
+        </app-product-box>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

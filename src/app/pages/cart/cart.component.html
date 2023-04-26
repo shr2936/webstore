@@ -1,0 +1,65 @@
+<div class="items-cart">
+  <div *ngIf="cart && cart.items && cart.items.length; else emptyCart">
+    <div>
+      <button routerLink="/home" mat-raised-button color="accent">
+        Continue shopping
+      </button>
+      <button (click)="onClickEmptyCart()" mat-raised-button>Empty cart</button>
+    </div>
+    <table>
+      <tr>
+        <th *ngFor="let col of displayedColumns">
+          {{ col.name }}
+        </th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let item of cart.items; let i = index">
+        <td
+          *ngFor="let col of displayedColumns"
+          [ngStyle]="{ width: col.width }"
+        >
+          <div *ngIf="col.key != 'image'" class="row-data">
+            <mat-icon
+              *ngIf="col.key == 'quantity'"
+              (click)="updateQuantity(-1, i)"
+              >remove</mat-icon
+            >
+            <span>{{ item[col.key] }}</span>
+            <mat-icon
+              *ngIf="col.key == 'quantity'"
+              (click)="updateQuantity(1, i)"
+              >add</mat-icon
+            >
+          </div>
+          <div *ngIf="col.key == 'image'" class="row-data">
+            <div *ngIf="!item[col.key]" class="dummy-image">Image dummy</div>
+            <div *ngIf="item[col.key]">
+              <img [src]="item[col.key]" class="product-image" />
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="row-data">{{ item["quantity"] * item["price"] }}</div>
+        </td>
+        <td>
+          <div (click)="removeItem(i)" class="row-data">Remove</div>
+        </td>
+      </tr>
+    </table>
+    <div>
+      <button (click)="onCheckout()" mat-raised-button color="primary">
+        Proceed to checkout
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #emptyCart>
+  <div class="empty-cart">
+    <div>No items in cart</div>
+    <button routerLink="/home" mat-raised-button color="primary">
+      Start shopping
+    </button>
+  </div>
+</ng-template>

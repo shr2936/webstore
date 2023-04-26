@@ -1,0 +1,38 @@
+<div class="header">
+  <div class="header-text">Web store</div>
+  <div class="header-cart-icon" [matMenuTriggerFor]="menu">
+    <div class="badge">{{ cartData.items.length }}</div>
+    <mat-icon>shopping_cart</mat-icon>
+  </div>
+  <mat-menu #menu="matMenu" class="cart-menu" [hasBackdrop]="false">
+    <div class="menu-row highlight">
+      <div>{{ cartData.items.length }} items</div>
+      <div class="cursor-pointer" routerLink="cart">View cart</div>
+    </div>
+    <div class="menu-row" *ngFor="let item of cartData.items">
+      <div>
+        <span>{{ item.name }}</span
+        ><span class="bold"> x {{ item.quantity }}</span>
+      </div>
+      <div>{{ item.price * item.quantity | currency }}</div>
+    </div>
+    <div class="menu-row highlight">
+      <div>Total:</div>
+      <div>{{ totalCartPrice | currency }}</div>
+    </div>
+    <div class="menu-row highlight">
+      <mat-icon
+        matTooltip="Empty your cart"
+        matTooltipClass="tooltip"
+        class="remove"
+        >remove_shopping_cart</mat-icon
+      >
+      <mat-icon
+        matTooltip="Proceed to checkout"
+        matTooltipClass="tooltip"
+        class="proceed"
+        >shopping_cart</mat-icon
+      >
+    </div>
+  </mat-menu>
+</div>

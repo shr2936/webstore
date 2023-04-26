@@ -1,0 +1,62 @@
+$background: #f2f2f2;
+$border: #c6c6c6;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0 50px 0 20px;
+  align-items: center;
+  background-color: $background;
+
+  &-text {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  &-cart-icon {
+    cursor: pointer;
+    mat-icon {
+      font-size: 30px;
+    }
+  }
+}
+::ng-deep.cart-menu {
+  background-color: $background;
+  padding: 10px 15px;
+
+  .menu-row {
+    display: flex;
+    justify-content: space-between;
+
+    &.highlight {
+      font-weight: 600;
+      padding: 5px 0;
+    }
+
+    &:first-child {
+      border-bottom: 1px solid $border;
+      margin-bottom: 5px;
+      padding-top: 0;
+    }
+
+    &:last-child,
+    &:nth-last-child(2) {
+      border-top: 1px solid $border;
+      margin-top: 5px;
+    }
+
+    &:last-child {
+      padding-top: 10px;
+      padding-bottom: 0;
+    }
+
+    .remove {
+      color: red;
+    }
+
+    .proceed {
+      color: green;
+    }
+  }
+}

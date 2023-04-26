@@ -1,0 +1,23 @@
+<div class="product-header">
+    <div>
+        <div class="sort-by" [matMenuTriggerFor]="sortMenu">Sort by {{ sortBy }} <mat-icon>expand_more</mat-icon></div>
+        <mat-menu #sortMenu="matMenu" [hasBackdrop]="false" class="sort-by">
+            <div *ngFor="let option of sortByOptions" (click)="sortBy = option" mat-menu-item>
+                {{option}}
+            </div>
+        </mat-menu>
+    </div>
+    <div class="items-count">
+        <div class="count" [matMenuTriggerFor]="itemsCountMenu">Show {{ itemsCount }} <mat-icon>expand_more</mat-icon></div>
+        <mat-menu #itemsCountMenu="matMenu">
+            <div *ngFor="let option of itemsCountOptions" (click)="itemsCount = option" mat-menu-item>
+                {{ option }}
+            </div>
+        </mat-menu>
+    </div>
+    <div class="view-options">
+        <mat-icon (click)="updateViewOption(1)">view_list</mat-icon>
+        <mat-icon (click)="updateViewOption(3)">view_module</mat-icon>
+        <mat-icon (click)="updateViewOption(4)">view_comfy</mat-icon>
+    </div>
+</div>

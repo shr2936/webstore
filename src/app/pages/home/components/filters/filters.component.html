@@ -1,0 +1,6 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>Categories</mat-expansion-panel-header>
+    <mat-selection-list [multiple]="false">
+        <mat-list-option *ngFor="let category of categories" (click)="updateSelectedCategory(category)">{{ category }}</mat-list-option>
+    </mat-selection-list>
+</mat-expansion-panel>

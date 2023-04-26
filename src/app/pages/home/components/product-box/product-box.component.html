@@ -1,0 +1,29 @@
+<div class="product-box" [ngClass]="{ 'single-col': colsCount == 1 }">
+  <div *ngIf="!product.image" class="dummy-image">Image dummy</div>
+  <img *ngIf="product.image" [src]="product.image" class="product-image" />
+  <div class="box-rows">
+    <div class="box-row">{{ product.category }}</div>
+    <div class="box-row">{{ product.name }}</div>
+    <div class="box-row bottom-row">
+      <div>{{ product.price | currency }}</div>
+      <div
+        class="update-quantity"
+        *ngIf="!product.quantity; else addRemoveProduct"
+      >
+        <mat-icon
+          (click)="addToCart()"
+          matTooltip="Add to cart"
+          matTooltipClass="tooltip"
+          >add</mat-icon
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #addRemoveProduct>
+  <div class="update-quantity">
+    <mat-icon (click)="updateProductQuantity(-1)">remove</mat-icon>
+    <span>{{ product.quantity }}</span>
+    <mat-icon (click)="updateProductQuantity(1)">add</mat-icon>
+  </div>
+</ng-template>
