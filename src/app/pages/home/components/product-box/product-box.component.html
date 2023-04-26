@@ -5,7 +5,7 @@
     <div class="box-row">{{ product.category }}</div>
     <div class="box-row">{{ product.name }}</div>
     <div class="box-row bottom-row">
-      <div>{{ product.price | currency }}</div>
+      <div>{{ product.price | currency : "INR" }}</div>
       <div
         class="update-quantity"
         *ngIf="!product.quantity; else addRemoveProduct"
